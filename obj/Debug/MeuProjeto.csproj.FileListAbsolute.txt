@@ -1,0 +1,7 @@
+C:\Users\Avatar\Desktop\Aulas\MeuProjeto\bin\Debug\MeuProjeto.exe.config
+C:\Users\Avatar\Desktop\Aulas\MeuProjeto\bin\Debug\MeuProjeto.exe
+C:\Users\Avatar\Desktop\Aulas\MeuProjeto\bin\Debug\MeuProjeto.pdb
+C:\Users\Avatar\Desktop\Aulas\MeuProjeto\obj\Debug\MeuProjeto.csprojAssemblyReference.cache
+C:\Users\Avatar\Desktop\Aulas\MeuProjeto\obj\Debug\MeuProjeto.csproj.CoreCompileInputs.cache
+C:\Users\Avatar\Desktop\Aulas\MeuProjeto\obj\Debug\MeuProjeto.exe
+C:\Users\Avatar\Desktop\Aulas\MeuProjeto\obj\Debug\MeuProjeto.pdb
