@@ -14,18 +14,20 @@ namespace MeuProjeto
     {
         static void Main(string[] args)
         {
-            tring cad1, email;
+            string email = "", cad1;
+            int senha = 0, opicao = 0;
+            List<string> listaEmail = new List<string>();
+            List<int> listaSenha = new List<int>();
+            List<string> listaModelo = new List<string>();
+            List<int> listaCor = new List<int>();
+            List<int> listaTex = new List<int>();
 
-            List<string> listaemail = new List<string>();
-            List<int> listasenha = new List<int>();
-
-
+            #region Cadastro e Login
             //tela1
             Console.Write("BEM VINDO MIGUS!\n");
 
             //tela2
-
-            Cadastro();
+            Cadastro(listaEmail, listaSenha);
 
             Console.WriteLine("DESEJA REALIZAR UM NOVO CADASTRO?");
             cad1 = Console.ReadLine();
@@ -33,44 +35,66 @@ namespace MeuProjeto
 
             while (cad1 == "sim")
             {
-                Cadastro();
+                Cadastro(listaEmail, listaSenha);
                 Console.WriteLine("DESEJA REALIZAR UM NOVO CADASTRO?");
                 cad1 = Console.ReadLine();
                 Console.Clear();
             }
+
             if (cad1 == "nao")
             {
-                Login(email);
+                Login(listaEmail, listaSenha);
+                //bool emailCorreto = listaEmail.Contains(email);
+                //while (emailCorreto)
+                //{
+                    //Login(listaEmail, listaSenha);
+                    int posicao = listaSenha.FindIndex(x => x == senha);
 
+                    if (senha == listaSenha[posicao])
+                    {
+                        Menu(opicao);
+                    }
+                    else
+                    {
+                        for (int i = 0; listaSenha.Contains(senha); i++)
+                            Console.Write("SENHA INCORRETA");
+                    }
+                //}
             }
-
-            if (email != listaemail)
-            {
-                Console.Write("Dados invalidos, tente novamente");
-                Login(email);
-            }
-
-
+            Console.Clear();
+            #endregion
 
             //tela3
+            Menu(opicao);
+            if(opicao == 1)
+            {
+                Material(opicao, listaModelo, listaCor, listaTex);
 
+            }
 
-
+            Console.Write("DESEJA CADASTRAR UM NOVO MATERIAL? ");
+            string novo = Console.ReadLine();
+            while (novo == "sim")
+            {
+                Material(opicao, listaModelo, listaCor, listaTex);
+            }
+            if(novo == "nao")
+            {
+                Menu(opicao);
+            }
             Console.ReadLine();
         }
-        public static void Cadastro()
+        public static void Cadastro(List<string> listaEmail, List<int> listaSenha)
         {
             int senha, senha2;
             string nome, email;
-            List<string> listaemail = new List<string>();
-            List<int> listasenha = new List<int>();
 
             Console.WriteLine("CRIAR SUA CONTA");
             Console.Write("NOME: ");
             nome = Console.ReadLine();
             Console.Write("E-MAIL: ");
             email = Console.ReadLine();
-            listaemail.Add(email);
+            listaEmail.Add(email);
             Console.Write("SENHA: ");
             senha = Convert.ToInt32(Console.ReadLine());
             Console.Write("CONFIRME SUA SENHA: ");
@@ -82,21 +106,42 @@ namespace MeuProjeto
                 Console.Write("CONFIRME SUA SENHA NOVAMENTE: ");
                 senha2 = Convert.ToInt32(Console.ReadLine());
             }
-            listasenha.Add(senha);
+            listaSenha.Add(senha);
             Console.Clear();
         }
-        public static void Login (string email)
+        public static void Login(List<string> listaEmail, List<int> listaSenha)
         {
-            List<string> listaemail = new List<string>();
-            List<int> listasenha = new List<int>();
+            string email;
             int senha;
             Console.WriteLine("LOGIN");
             Console.Write("E-MAIL: ");
             email = Console.ReadLine();
-            listaemail.Contains(email);
+            listaEmail.Contains(email);
             Console.Write("SENHA: ");
             senha = Convert.ToInt32(Console.ReadLine());
-            listasenha.Contains(senha);
+            listaSenha.Contains(senha);
         }
+        public static void Material(int opicao, List<string>listaModelo, List<int>listaCor, List<int>listaTex)
+        {
+            Console.Write("MODELO: ");
+            string modelo = Console.ReadLine();
+            listaModelo.Add(modelo);
+            Console.Write("COR: ");
+            int cor = Convert.ToInt32(Console.ReadLine());
+            listaCor.Add(cor);
+            Console.Write("TEX: ");
+            int tex = Convert.ToInt32(Console.ReadLine());
+            listaTex.Add(tex);
+            Console.Clear();
+            Console.WriteLine("ITEM CADASTRADO");
+          
+        }
+        public static void Menu(int opicao)
+        {
+            Console.Write("1- CADASTRAR MATERIAL\n" +
+                 "2 - CADASTRAR VENDA");
+            opicao = Convert.ToInt32(Console.ReadLine());
+        }
+
     }
 }
